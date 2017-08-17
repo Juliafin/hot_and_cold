@@ -1,0 +1,7 @@
+label {
+  display: block;
+}
+
+input#hot_cold_input{
+  margin-bottom: 10px;
+}

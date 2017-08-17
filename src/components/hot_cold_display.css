@@ -1,0 +1,17 @@
+.grey {
+  background-color: grey;
+}
+
+.red {
+  background-color: red;
+}
+
+.blue {
+  background-color: blue;
+}
+
+.hot_cold_container {
+  height: 100px;
+  width: 300px;
+  margin: 0 auto;
+}
