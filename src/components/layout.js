@@ -11,6 +11,7 @@ export default class Layout extends Component {
 
     this.state = {
       input:'',
+      currentNumber:'',
       randomNumber:Math.round(Math.random() * 100),
       guessedNumbers: []
     }
@@ -34,8 +35,15 @@ export default class Layout extends Component {
     
     
     console.log(this.state);
-    
-    
+  }
+
+  validateInput() {
+    const numTest = new RegExp(/^\d+$/);
+    if (numTest.test(this.state.input) && this.state.input > 0 && this.state.input < 100 ) {
+      this.setState({currentNumber:this.state.input})
+    } else {
+      console.log('the input entered was invalid');
+    }
   }
 
   render() {
