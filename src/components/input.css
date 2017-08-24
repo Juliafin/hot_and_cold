@@ -1,5 +1,8 @@
 label {
   display: block;
+  margin: 2vw 0;
+  font-family: verdana;
+  font-size: 2vw;
 }
 
 input#hot_cold_input{

@@ -10,10 +10,11 @@ export default class Input extends React.Component {
     render() {
       return (
         <div className="input">
+          <form onSubmit={(event) => {event.preventDefault()}}>
           <label htmlFor="hot_cold_input">Guess the Number</label>
           <input type="text" id="hot_cold_input" onChange={(event) => {this.props.onChange(event)}}/>
-          <button >Submit</button>
-
+          <button onClick={(event) => {this.props.onClick(event)}} >Submit</button>
+          </form>
         </div>
       )
     }
