@@ -25,21 +25,11 @@ export default class Layout extends Component {
   }
 
 // collects input from the 
-  collectInput(event) {
-    event.preventDefault();
-    let input = event.target.value;
-    console.log(input);
-    this.setState({
-      input:input,
-      
-    })
-    // this.state.guessedNumbers.push(input);
-    // this.state.input = input;
-    // setting state directly works but setState doesn't??
-    
-    
-    console.log(this.state);
-  }
+collectInput(value) {
+  this.setState({
+    input:value,
+  })
+}
 
 numberExists(currentNumber) {
     for (var i=0;i < this.state.guessedNumbers.length;i++) {
@@ -52,8 +42,6 @@ numberExists(currentNumber) {
     }
     return false;
   }
-
-
 
   hotOrCold() {
 
@@ -174,34 +162,20 @@ numberExists(currentNumber) {
   
 
   render() {
-    console.log(this.state.randomNumber);
-    setTimeout(function() {
-    console.log('this is the input in the state', this.state);
-    }, 1000);
-
-    if (this.state.guessedCorrectly) {
-      return (
-        <div className="App">
-        <div className="App-header">
-          <h2>Hot and Cold</h2>
-        </div>
-        < Input onChange={this.collectInput} onClick={this.validateInput}/>
-        <button onClick={(event) => {this.resetState(event)}}>Play Again?</button>
-        < HotColdDisplay message={this.state.message} class={this.state.class}/>
-        < NumberDisplay colors={this.state.colors} numbers={this.state.guessedNumbers}/>
-        </div>
-      )
-    }
-
-    return (
-      <div className="App">
-        <div className="App-header">
-          <h2>Hot and Cold</h2>
-        </div>
-        < Input onChange={this.collectInput} onClick={this.validateInput}/>
-        < HotColdDisplay message={this.state.message} class={this.state.class}/>
-        < NumberDisplay colors={this.state.colors} numbers={this.state.guessedNumbers}/>
-      </div>
-    );
-  }
+    
+        const resetBtn = this.state.guessedCorrectly?<button onClick={(event) => {this.resetState(event)}}>Play Again?</button>:'';
+    
+    
+        return (
+          <div className="App">
+            <div className="App-header">
+              <h2>Hot and Cold</h2>
+            </div>
+            < Input initial={this.state.input} onChange={this.collectInput} onClick={this.validateInput}/>
+              {resetBtn}
+            < HotColdDisplay message={this.state.message} class={this.state.class}/>
+            < NumberDisplay colors={this.state.colors} numbers={this.state.guessedNumbers}/>
+          </div>
+        );
+      }
 }
